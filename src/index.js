@@ -1,11 +1,12 @@
-import { Context } from "./context.ts";
-import { initDB } from "./db.ts";
-import { initViewer, initList } from "./inits.ts";
+import {Context} from "./context.ts";
+import {CsvExporterDatabase} from "./database";
 
 (async () => {
-  const context = new Context();
-  const db = await initDB();
-
-  initViewer(db, context);
-  initList(db, context);
+    console.info("Start script");
+    const context = new Context();
+    console.info("Create context");
+    const database = new CsvExporterDatabase();
+    console.info("Initialized database");
+    await database.createDatabases();
+    console.info("Database Up");
 })();

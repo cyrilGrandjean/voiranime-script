@@ -45,5 +45,8 @@
   },
   "config": {
     "port": "8749"
+  },
+  "dependencies": {
+    "beast-orm": "^1.0.4"
   }
 }
