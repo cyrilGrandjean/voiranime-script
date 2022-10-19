@@ -21,6 +21,4 @@ import {Csv} from "./utils";
     console.info(data);
     const data2 = await database.getAllDataFromSeries('seriees');
     console.info(data2);
-    const test = new Csv(data2);
-    test.download()
 })();
