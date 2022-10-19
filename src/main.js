@@ -1,5 +1,6 @@
 import {Context} from "./models/context.ts";
 import {CsvExporterDatabase} from "./database";
+import {Csv} from "./utils";
 
 (async () => {
     console.info("Start script");
@@ -20,4 +21,6 @@ import {CsvExporterDatabase} from "./database";
     console.info(data);
     const data2 = await database.getAllDataFromSeries('seriees');
     console.info(data2);
+    const test = new Csv(data2);
+    test.download()
 })();

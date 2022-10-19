@@ -5,7 +5,7 @@ import {
   isDataInDB,
   getSeriesChapters,
   addListDL,
-} from "./utils";
+} from "./utilsLast";
 
 export function initViewer(db: IDBDatabase, context: Context) {
   const lecteurPicker: HTMLInputElement =
