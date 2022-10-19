@@ -1,4 +1,4 @@
-import type { Context } from "./context";
+import type { Context } from "./models/context";
 
 export function addListDL(context: Context) {
   const swapLink: HTMLElement = document.querySelector(
