@@ -12,7 +12,7 @@ const pkg = require('./package.json')
 fs.mkdir('dist/', { recursive: true }, () => null)
 
 export default {
-  input: 'src/index.js',
+  input: 'src/main.js',
   output: {
     file: 'dist/bundle.user.js',
     format: 'iife',
