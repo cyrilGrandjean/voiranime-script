@@ -47,6 +47,7 @@
     "port": "8749"
   },
   "dependencies": {
-    "beast-orm": "^1.0.4"
+    "beast-orm": "^1.0.4",
+    "redom": "^3.29.1"
   }
 }
