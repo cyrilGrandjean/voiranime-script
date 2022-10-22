@@ -1,14 +1,16 @@
 export class Reader {
+    iframe: HTMLIFrameElement;
 
     constructor() {
+        this.getIframe();
     }
 
-    private get iframe(): HTMLIFrameElement {
-        return document.querySelector(".chapter-video-frame iframe");
+    private getIframe(): void {
+        this.iframe = document.querySelector(".chapter-video-frame iframe");
     }
 
     public canGetUrl(): boolean {
-        return this.iframe.title === 'reCAPTCHA';
+        return this.iframe.title !== 'reCAPTCHA';
     }
 
     public getUrl(): string {
