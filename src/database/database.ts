@@ -59,4 +59,8 @@ export class CsvExporterDatabase {
         return ChapterUrlsModel.filter({series}, {episode}).update({episodeUrl: url});
     }
 
+    public async updateReader(series: string, episode: number, reader: string, url: string): Promise<ChapterUrls> {
+        return ChapterUrlsModel.filter({series}, {episode}).update({episodeUrl: url, reader: reader});
+    }
+
 }
