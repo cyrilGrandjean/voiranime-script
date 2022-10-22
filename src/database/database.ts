@@ -56,11 +56,11 @@ export class CsvExporterDatabase {
     }
 
     public async updateUrl(series: string, episode: number, url: string): Promise<ChapterUrls> {
-        return ChapterUrlsModel.filter({series}, {episode}).update({episodeUrl: url});
+        return ChapterUrlsModel.filter({series}, {episode}).update({embedUrl: url});
     }
 
     public async updateReader(series: string, episode: number, reader: string, url: string): Promise<ChapterUrls> {
-        return ChapterUrlsModel.filter({series}, {episode}).update({episodeUrl: url, reader: reader});
+        return ChapterUrlsModel.filter({series}, {episode}).update({embedUrl: url, reader: reader});
     }
 
 }
