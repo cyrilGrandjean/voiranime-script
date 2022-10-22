@@ -27,7 +27,7 @@ export class CsvExporterDatabase {
                             series: string,
                             embedUrl: string,
                             episodeUrl: string,
-                            reader: string): Promise<ChapterUrlsModel> {
+                            reader: string): Promise<ChapterUrls> {
         return ChapterUrlsModel.create({
             id: this.createdataId(episode, series),
             series,
@@ -38,7 +38,7 @@ export class CsvExporterDatabase {
         });
     }
 
-    public async getData(series: string, episode: number): Promise<ChapterUrlsModel | false> {
+    public async getData(series: string, episode: number): Promise<ChapterUrls | false> {
         return ChapterUrlsModel.get({id: this.createdataId(episode, series)});
     }
 
@@ -55,7 +55,7 @@ export class CsvExporterDatabase {
         return ChapterUrlsModel.filter({series}).execute();
     }
 
-    public async updateUrl(series: string, episode: number, url: string): Promise<any> {
+    public async updateUrl(series: string, episode: number, url: string): Promise<ChapterUrls> {
         return ChapterUrlsModel.filter({series}, {episode}).update({episodeUrl: url});
     }
 
