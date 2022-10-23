@@ -12,8 +12,8 @@ export function createDownloadButton(actionButton: () => void): void {
             id: 'titleDownload',
             class: 'btn',
             disabled: true,
-            click: actionButton
         });
+    button.addEventListener('click', actionButton)
     const div = el('div', button, {
         class: "select-view",
         style: "display: flex;align-items:center;height: 36px;background-color:#ebebeb;border-radius:5px; margin-left: 1rem; padding: 0.5rem;"
@@ -31,6 +31,12 @@ export function updateDownloadButton(): void {
         button.disabled = true;
         button.innerHTML = "Resolve this captcha first";
     }
+}
+
+export function updateDownloadButtonClipboard(): void {
+    const button = document.getElementById('titleDownload') as HTMLButtonElement;
+    button.innerHTML = "Copied!";
+    button.disabled = true;
 }
 
 export function addButtonDownloadCsv(callDownload: () => void) {
