@@ -44,15 +44,23 @@ export class CsvExporterDatabase {
 
     public async isDataInDB(series: string, episode: number): Promise<boolean> {
         const result = await this.getData(series, episode);
-        if (result === false) {
-            return false
-        } else {
-            return true
-        }
+        return result !== false;
     }
 
     public async getAllDataFromSeries(series: string): Promise<ChapterUrls[]> {
-        return ChapterUrlsModel.filter({series}).execute();
+        const data: ChapterUrls[] = await ChapterUrlsModel.filter({series}).execute();
+        data.sort(
+            (a, b) => {
+                if (a.episode < b.episode) {
+                    return -1;
+                } else if (a.episode > b.episode) {
+                    return 1
+                } else {
+                    return 0;
+                }
+            }
+        )
+        return data;
     }
 
     public async updateUrl(series: string, episode: number, url: string): Promise<ChapterUrls> {
