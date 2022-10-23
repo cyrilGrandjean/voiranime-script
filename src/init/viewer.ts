@@ -1,5 +1,6 @@
 import {ChapterUrls, CsvExporterDatabase} from "../database";
 import {addEventOnCaptChat} from "../event";
+import {createDownloadButton} from "../utils";
 
 export function initViewer(db: CsvExporterDatabase): void {
     const lecteurPicker: HTMLInputElement =
@@ -22,5 +23,7 @@ export function initViewer(db: CsvExporterDatabase): void {
         context.reader = (e.target as HTMLInputElement).value;
         setTimeout(addEventOnCaptChat(db, context), 100);
     })
+
+    createDownloadButton();
 
 }

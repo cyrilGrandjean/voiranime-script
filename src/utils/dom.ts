@@ -3,18 +3,20 @@ import {ChapterUrls} from "../database";
 import {createCSV} from "../utilsLast";
 
 export function createDownloadButton(): void {
-    const button = el('button')
-    button.id = "csvExportButton";
-    button.disabled = true;
-    button.innerHTML = "LOADING...";
-    button.classList.add("btn");
-
-    button.style.backgroundColor = "black";
-    button.style.color = "white";
-    button.style.height = "36px";
-    button.style.padding = "4px";
-    const nextContainer = document.querySelector(".select-view");
-    nextContainer.appendChild(button);
+    const parent = document.querySelector('div.wp-manga-nav');
+    const button = el(
+        'button',
+        'Resolve this captcha first',
+        {
+            style: 'margin-bottom:0;',
+            id: 'titleDownload',
+            class: 'btn',
+        });
+    const div = el('div', button, {
+        class: "select-view",
+        style: "display: flex;align-items:center;height: 36px;background-color:#ebebeb;border-radius:5px; margin-left: 1rem; padding: 0.5rem;"
+    });
+    parent.appendChild(div);
 }
 
 export function addButtonDownloadCsv(callDownload: () => void) {
