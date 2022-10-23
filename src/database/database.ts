@@ -56,11 +56,13 @@ export class CsvExporterDatabase {
     }
 
     public async updateUrl(series: string, episode: number, url: string): Promise<ChapterUrls> {
-        return ChapterUrlsModel.filter({series}, {episode}).update({embedUrl: url});
+        const id = this.createdataId(episode, series);
+        return ChapterUrlsModel.filter({id: id}).update({embedUrl: url});
     }
 
     public async updateReader(series: string, episode: number, reader: string, url: string): Promise<ChapterUrls> {
-        return ChapterUrlsModel.filter({series}, {episode}).update({embedUrl: url, reader: reader});
+        const id = this.createdataId(episode, series);
+        return ChapterUrlsModel.filter({id: id}).update({embedUrl: url, reader: reader});
     }
 
 }

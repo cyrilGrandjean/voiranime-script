@@ -1,5 +1,5 @@
 import {ChapterUrls, CsvExporterDatabase} from "../database";
-import {Reader} from "../utils";
+import {Reader, updateDownloadButton} from "../utils";
 
 export function addEventOnCaptChat(db: CsvExporterDatabase, context: Partial<ChapterUrls>) {
     return () => {
@@ -29,15 +29,17 @@ export function addEventOnCaptChat(db: CsvExporterDatabase, context: Partial<Cha
                         );
                     } else {
                         const data = await db.getData(context.series, context.episode);
+                        // console.info(data);
                         if (data != false && (data.reader == context.reader)) {
                             await db.updateUrl(context.series, context.episode, context.embedUrl);
                         } else {
                             let confirme = window.confirm('Etes vous sur de vouloir changer de lecteur?');
                             if (confirme) {
-                                await db.updateReader(context.series, context.episode, context.embedUrl, context.reader);
+                                await db.updateReader(context.series, context.episode, context.reader, context.embedUrl);
                             }
                         }
                     }
+                    updateDownloadButton();
                 }
             }, 1000, db, context);
         });

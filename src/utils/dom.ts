@@ -1,8 +1,8 @@
 import {el} from "redom";
 import {ChapterUrls} from "../database";
-import {createCSV} from "../utilsLast";
+import {Reader} from "./reader";
 
-export function createDownloadButton(): void {
+export function createDownloadButton(actionButton: () => void): void {
     const parent = document.querySelector('div.wp-manga-nav');
     const button = el(
         'button',
@@ -11,12 +11,26 @@ export function createDownloadButton(): void {
             style: 'margin-bottom:0;',
             id: 'titleDownload',
             class: 'btn',
+            disabled: true,
+            click: actionButton
         });
     const div = el('div', button, {
         class: "select-view",
         style: "display: flex;align-items:center;height: 36px;background-color:#ebebeb;border-radius:5px; margin-left: 1rem; padding: 0.5rem;"
     });
     parent.appendChild(div);
+}
+
+export function updateDownloadButton(): void {
+    const button = document.getElementById('titleDownload') as HTMLButtonElement;
+    const reader = new Reader();
+    if (reader.canGetUrl()) {
+        button.disabled = false;
+        button.innerHTML = "Copy épisode's url";
+    } else {
+        button.disabled = true;
+        button.innerHTML = "Resolve this captcha first";
+    }
 }
 
 export function addButtonDownloadCsv(callDownload: () => void) {
