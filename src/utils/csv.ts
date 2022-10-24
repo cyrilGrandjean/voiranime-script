@@ -13,7 +13,7 @@ export class Csv {
         return this.dataBrut.map((data) => {
             return {
                 episode: data.episode,
-                url: data.episodeUrl,
+                url: data.embedUrl,
             };
         });
     }
