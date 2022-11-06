@@ -9,7 +9,7 @@
     "rollup",
     "typescript"
   ],
-  "author": "D34DPlayer",
+  "author": "cyrilGrandjean",
   "license": "MIT",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
