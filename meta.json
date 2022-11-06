@@ -1,6 +1,6 @@
 {
     "name": "VoirAnime CSV Exporter",
-    "namespace": "github.com/D34DPlayer",
+    "namespace": "github.com/cyrilGrandjean",
     "copyright": "2022",
     "match": [
       "https://voiranime.com/*"
