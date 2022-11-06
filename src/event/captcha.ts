@@ -19,7 +19,7 @@ export function addEventOnCaptChat(db: CsvExporterDatabase, context: Partial<Cha
                 if (reader.canGetUrl()) {
                     clrInterval();
                     context.embedUrl = reader.getUrl();
-                    if (verifiedUrl(context.embedUrl)) {
+                    if (!verifiedUrl(context.embedUrl)) {
                         videoNotAvailable();
                         window.alert('Video not available!');
                         return;
