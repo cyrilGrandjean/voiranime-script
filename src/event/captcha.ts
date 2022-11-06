@@ -1,5 +1,5 @@
 import {ChapterUrls, CsvExporterDatabase} from "../database";
-import {Reader, updateDownloadButton} from "../utils";
+import {Reader, updateDownloadButton, verifiedUrl, videoNotAvailable} from "../utils";
 
 export function addEventOnCaptChat(db: CsvExporterDatabase, context: Partial<ChapterUrls>) {
     return () => {
@@ -19,6 +19,11 @@ export function addEventOnCaptChat(db: CsvExporterDatabase, context: Partial<Cha
                 if (reader.canGetUrl()) {
                     clrInterval();
                     context.embedUrl = reader.getUrl();
+                    if (verifiedUrl(context.embedUrl)) {
+                        videoNotAvailable();
+                        window.alert('Video not available!');
+                        return;
+                    }
                     if (!await db.isDataInDB(context.series, context.episode)) {
                         await db.insertData(
                             context.episode,
