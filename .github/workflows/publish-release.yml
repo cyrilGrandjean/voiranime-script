@@ -1,0 +1,26 @@
+name: Publish Release
+
+on:
+  release:
+    types: [published]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Test npm run build
+        run: |
+          yarn
+          yarn build
+          yarn build:release
+
+      - name: Build
+        run: yarn build:release
+
+      - name: Upload release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          file: dist/*
+          overwrite: true
+          file_glob: true
