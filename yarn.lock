@@ -629,6 +629,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/greasemonkey@npm:^4.0.4":
+  version: 4.0.4
+  resolution: "@types/greasemonkey@npm:4.0.4"
+  checksum: 6aa2663601e1d71fb47908f90662a04a7bf0d01800f9e7572936054cfe7c313a8364ff1913024950433d20dfa594f3cf485b3dbd3bf7e531d7e8cdf4b2ee2efd
+  languageName: node
+  linkType: hard
+
 "@types/node@npm:*":
   version: 18.11.0
   resolution: "@types/node@npm:18.11.0"
@@ -2756,6 +2763,7 @@ __metadata:
     "@rollup/plugin-node-resolve": ^13.3.0
     "@rollup/plugin-replace": ^4.0.0
     "@rollup/plugin-typescript": ^8.3.2
+    "@types/greasemonkey": ^4.0.4
     "@types/react": ^18.0.9
     beast-orm: ^1.0.4
     colorette: ^2.0.16

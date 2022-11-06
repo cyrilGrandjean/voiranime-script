@@ -33,6 +33,12 @@ export function updateDownloadButton(): void {
     }
 }
 
+export function videoNotAvailable(): void {
+    const button = document.getElementById('titleDownload') as HTMLButtonElement;
+    button.disabled = true;
+    button.innerHTML = "Video not available";
+}
+
 export function updateDownloadButtonClipboard(): void {
     const button = document.getElementById('titleDownload') as HTMLButtonElement;
     button.innerHTML = "Copied!";
