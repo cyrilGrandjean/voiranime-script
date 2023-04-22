@@ -1,4 +1,4 @@
-import {models} from 'beast-orm';
+import { init } from "@d34d/w-orm";
 import {ChapterUrls, ChapterUrlsModel} from "./model";
 
 export class CsvExporterDatabase {
@@ -10,13 +10,7 @@ export class CsvExporterDatabase {
     }
 
     public async createDatabases(): Promise<void> {
-        return models.register({
-            databaseName: CsvExporterDatabase.dbName,
-            version: CsvExporterDatabase.dbVersion,
-            type: "indexedDB",
-            models: [ChapterUrlsModel],
-        });
-
+        await init(CsvExporterDatabase.dbName, CsvExporterDatabase.dbVersion);
     }
 
     private createdataId(episode: number, series: string): string {
@@ -38,39 +32,29 @@ export class CsvExporterDatabase {
         });
     }
 
-    public async getData(series: string, episode: number): Promise<ChapterUrls | false> {
-        return ChapterUrlsModel.get({id: this.createdataId(episode, series)});
+    public async getData(series: string, episode: number): Promise<ChapterUrls | null> {
+        return ChapterUrlsModel.get(this.createdataId(episode, series));
     }
 
     public async isDataInDB(series: string, episode: number): Promise<boolean> {
         const result = await this.getData(series, episode);
-        return result !== false;
+        return !!result;
     }
 
     public async getAllDataFromSeries(series: string): Promise<ChapterUrls[]> {
-        const data: ChapterUrls[] = await ChapterUrlsModel.filter({series}).execute();
-        data.sort(
-            (a, b) => {
-                if (a.episode < b.episode) {
-                    return -1;
-                } else if (a.episode > b.episode) {
-                    return 1
-                } else {
-                    return 0;
-                }
-            }
-        )
+        const data: ChapterUrls[] = await ChapterUrlsModel.filter({series}).orderBy("episode").all();
+
         return data;
     }
 
-    public async updateUrl(series: string, episode: number, url: string): Promise<ChapterUrls> {
+    public async updateUrl(series: string, episode: number, url: string): Promise<void> {
         const id = this.createdataId(episode, series);
-        return ChapterUrlsModel.filter({id: id}).update({embedUrl: url});
+        await ChapterUrlsModel.filter({id: id}).update({embedUrl: url});
     }
 
-    public async updateReader(series: string, episode: number, reader: string, url: string): Promise<ChapterUrls> {
+    public async updateReader(series: string, episode: number, reader: string, url: string): Promise<void> {
         const id = this.createdataId(episode, series);
-        return ChapterUrlsModel.filter({id: id}).update({embedUrl: url, reader: reader});
+        await ChapterUrlsModel.filter({id: id}).update({embedUrl: url, reader: reader});
     }
 
 }
