@@ -35,7 +35,7 @@ export function addEventOnCaptChat(db: CsvExporterDatabase, context: Partial<Cha
                     } else {
                         const data = await db.getData(context.series, context.episode);
                         // console.info(data);
-                        if (data != false && (data.reader == context.reader)) {
+                        if (data && (data.reader == context.reader)) {
                             await db.updateUrl(context.series, context.episode, context.embedUrl);
                         } else {
                             let confirme = window.confirm('Etes vous sur de vouloir changer de lecteur?');
