@@ -1,12 +1,23 @@
-import {models} from "beast-orm";
+import { Model, Field } from "@d34d/w-orm";
 
-export class ChapterUrlsModel extends models.Model {
-    id = models.CharField({primaryKey: true});
-    series = models.CharField({unique: false});
-    episode = models.IntegerField({unique: false});
-    reader = models.CharField({unique: false});
-    embedUrl = models.CharField({unique: true});
-    episodeUrl = models.CharField({unique: true});
+export class ChapterUrlsModel extends Model {
+    @Field({primaryKey: true})
+    id: string;
+
+    @Field({unique: false})
+    series: string;
+
+    @Field({unique: false})
+    episode: number;
+
+    @Field({unique: false})
+    reader: string;
+
+    @Field({unique: true})
+    embedUrl: string;
+
+    @Field({unique: true})
+    episodeUrl: string;
 }
 
 export interface ChapterUrls {
