@@ -12,7 +12,9 @@
             "./types",
             "./node_modules/@types",
             "./typings.d.ts"
-        ]
+        ],
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true
     },
     "exclude": [
         "node_modules"

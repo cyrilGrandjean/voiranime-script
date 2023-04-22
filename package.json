@@ -32,11 +32,9 @@
     "@rollup/plugin-node-resolve": "^13.3.0",
     "@rollup/plugin-replace": "^4.0.0",
     "@rollup/plugin-typescript": "^8.3.2",
-    "@types/react": "^18.0.9",
+    "@types/greasemonkey": "^4.0.4",
     "colorette": "^2.0.16",
     "esm": "^3.2.25",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
     "rollup": "^2.75.3",
     "rollup-plugin-userscript-metablock": "^0.3.1",
     "serve": "^13.0.2",
@@ -47,8 +45,7 @@
     "port": "8749"
   },
   "dependencies": {
-    "@types/greasemonkey": "^4.0.4",
-    "beast-orm": "^1.0.4",
+    "@d34d/w-orm": "^0.4.0",
     "redom": "^3.29.1"
   }
 }
