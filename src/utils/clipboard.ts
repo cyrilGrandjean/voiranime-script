@@ -5,7 +5,7 @@ export function copyToClipboard(db: CsvExporterDatabase, context: Partial<Chapte
     return async () => {
         const data = await db.getData(context.series, context.episode);
 
-        if (data != false && (data.reader == context.reader)) {
+        if (data && (data.reader == context.reader)) {
             navigator.clipboard.writeText(data.embedUrl);
             updateDownloadButtonClipboard();
         }
