@@ -4,7 +4,8 @@
     "copyright": "2023",
     "match": [
       "https://voiranime.com/*",
-      "https://v2.voiranime.com/*"        
+      "https://v2.voiranime.com/*",
+      "https://v3.voiranime.com/*"
     ],
     "grant": [],
   "icon": "https://www.google.com/s2/favicons?sz=64&domain=voiranime.com"
