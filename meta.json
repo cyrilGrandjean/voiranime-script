@@ -7,5 +7,6 @@
       "https://v*.voiranime.com/*"
     ],
     "grant": [],
-  "icon": "https://www.google.com/s2/favicons?sz=64&domain=voiranime.com"
+    "icon": "https://www.google.com/s2/favicons?sz=64&domain=voiranime.com",
+    "downloadURL":  "https://github.com/cyrilGrandjean/voiranime-script/releases/latest/download/voiranime-script.user.js"
 }
