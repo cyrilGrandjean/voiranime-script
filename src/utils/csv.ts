@@ -9,9 +9,11 @@ export class Csv {
         this.filename = data[0].series;
     }
 
-    private formatData(): { episode: number, url: string }[] {
+    private formatData(): { title: string, season: number, episode: number, url: string }[] {
         return this.dataBrut.map((data) => {
             return {
+                title: data.series,
+                season: 1,
                 episode: data.episode,
                 url: data.embedUrl,
             };
