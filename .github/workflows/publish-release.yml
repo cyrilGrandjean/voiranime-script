@@ -9,6 +9,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - name: Get release version
+        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+
+      - name: Update package version.
+        run: npm version $RELEASE_VERSION --no-git-tag-version --allow-same-version
+
       - name: Test npm run build
         run: |
           yarn

@@ -1,6 +1,5 @@
 {
   "name": "voiranime-script",
-  "version": "1.0.1",
   "description": "Keep track of the VoirAnime sources, to export them easily",
   "keywords": [
     "userscript",
@@ -19,7 +18,6 @@
     "start": "node -r esm server.js",
     "build:release": "npx rollup --config rollup.config.js --sourcemap 0 --file dist/${npm_package_name}.user.js",
     "build:release:win32": "npx rollup --config rollup.config.js --sourcemap 0 --file dist\\release.user.js",
-    "version": "npm run build:release && git add dist/release.user.js",
     "prepublishOnly": "npm run build:release && git add dist/release.user.js"
   },
   "devDependencies": {
